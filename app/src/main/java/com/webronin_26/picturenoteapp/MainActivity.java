@@ -14,12 +14,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int[] permissionArray = { 0 , 0 };
+    public static int[] permissionArray = { 0 , 0 };
     private final int EXTERNAL_PERMISSION_CODE = 100;
     private final int CAMERA_PERMISSION_CODE = 200;
 
@@ -57,11 +58,14 @@ public class MainActivity extends AppCompatActivity {
         cameraFrameLayout.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if( permissionArray[1] == 1 ) {
-                    Intent intent = new Intent( MainActivity.this , CameraActivity.class );
-                    startActivity( intent );
-                }else {
+                Intent intent = new Intent( MainActivity.this , CameraActivity.class );
+
+                if( permissionArray[1] == 0 ) {
                     askCameraPermission();
+                }else if( permissionArray[0] == 0) {
+                    askExternalPermission();
+                } else {
+                    startActivity( intent );
                 }
             }
         } );
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     this ,  Manifest.permission.WRITE_EXTERNAL_STORAGE ) ) {
 
                 new AlertDialog.Builder( this )
-                        .setMessage( "需要照片權限來打開您的相冊" )
+                        .setMessage( "需要照片權限來儲存和使用您的相冊" )
                         .setPositiveButton("瞭解", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick( DialogInterface dialog, int which ) {
@@ -104,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
 
                 new AlertDialog.Builder( this )
-                        .setMessage( "需要照片權限來打開您的相冊" )
+                        .setMessage( "需要照片權限來儲存和使用您的相冊" )
                         .setPositiveButton("瞭解", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick( DialogInterface dialog, int which ) {

@@ -431,6 +431,7 @@ public class CameraActivity extends AppCompatActivity {
                      *      如果不是 null 狀態，是
                      *          1. 已經對焦 而且 locked focused
                      *          2. 未對焦 而且 locked focused
+                     *          3. 正在對焦中
                      *          就取得目前的曝光狀態
                      *              如果曝光度完美：建構拍照方法
                      *              如果曝光度未完成：回調預處理狀態
