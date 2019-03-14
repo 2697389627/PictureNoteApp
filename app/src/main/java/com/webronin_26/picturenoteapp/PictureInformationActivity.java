@@ -55,7 +55,6 @@ public class PictureInformationActivity extends AppCompatActivity {
 
         Intent intent = new Intent( Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, PHOTO_REQUEST_CODE);
-
     }
 
     @Override
@@ -111,7 +110,6 @@ public class PictureInformationActivity extends AppCompatActivity {
         }
 
         return super.onCreateOptionsMenu(menu);
-
     }
 
     private void initView() {
@@ -173,6 +171,7 @@ public class PictureInformationActivity extends AppCompatActivity {
 
         setSupportActionBar( pictureInformationToolBar );
         ActionBar actionBar = getSupportActionBar();
+
         if( actionBar != null ) {
             actionBar.setTitle( "回相冊" );
             actionBar.setDisplayHomeAsUpEnabled( true );
@@ -181,16 +180,13 @@ public class PictureInformationActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
         sharedPreferences = getSharedPreferences( "PictureNoteAppInformation" , MODE_PRIVATE );
-
     }
 
     private void saveInformation( String filePath , String photoInfo ) {
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString( filePath , photoInfo ).apply();
-
     }
 
     private void setInformation( String filePath ) {
@@ -203,5 +199,4 @@ public class PictureInformationActivity extends AppCompatActivity {
             appCompatTextView.setText( currentInfo );
         }
     }
-
 }

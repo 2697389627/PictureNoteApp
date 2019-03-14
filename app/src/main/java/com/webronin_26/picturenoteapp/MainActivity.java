@@ -14,7 +14,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -69,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } );
-
     }
 
     private void checkPermissions() {
@@ -116,11 +114,8 @@ public class MainActivity extends AppCompatActivity {
                                         , new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE } , EXTERNAL_PERMISSION_CODE );
                             }
                         }).show();
-
             }
-
         }
-
     }
 
     private void askCameraPermission() {
@@ -151,11 +146,8 @@ public class MainActivity extends AppCompatActivity {
                                         , new String[]{ Manifest.permission.CAMERA } , CAMERA_PERMISSION_CODE );
                             }
                         }).show();
-
             }
-
         }
-
     }
 
     @Override
@@ -191,7 +183,5 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         }
-
     }
-
 }

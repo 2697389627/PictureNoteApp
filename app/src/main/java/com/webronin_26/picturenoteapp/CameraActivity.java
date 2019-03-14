@@ -302,7 +302,6 @@ public class CameraActivity extends AppCompatActivity {
      *      - onPause 的時候 stopBackgroundThread()
      */
     private HandlerThread mBackgroundThread;
-
     private Handler mBackgroundHandler;
 
     private void startBackgroundThread() {
@@ -353,9 +352,7 @@ public class CameraActivity extends AppCompatActivity {
     /**
      *  --------------------------  CaptureRequest & CallBack  -----------------------------------
      */
-
     private CaptureRequest.Builder mPreviewRequestBuilder;
-
     private CaptureRequest mPreviewRequest;
 
     /**
@@ -493,7 +490,6 @@ public class CameraActivity extends AppCompatActivity {
                 }
             }
         }
-
     };
 
     /**
@@ -679,7 +675,6 @@ public class CameraActivity extends AppCompatActivity {
         } else {
             captureStillPicture();
         }
-
     }
 
     private void lockFocus() {
@@ -799,7 +794,6 @@ public class CameraActivity extends AppCompatActivity {
     private void captureStillPicture() {
 
         try {
-
             if (null == mCameraDevice) {
                 return;
             }
@@ -857,11 +851,8 @@ public class CameraActivity extends AppCompatActivity {
                     mBackgroundHandler);
 
         } catch (CameraAccessException e) {
-
-            e.printStackTrace();
-
+            Log.e( "-------" , e.toString() );
         }
-
     }
 
     private int getOrientation(int rotation) {
@@ -929,7 +920,5 @@ public class CameraActivity extends AppCompatActivity {
             return Long.signum((long) lhs.getWidth() * lhs.getHeight() -
                     (long) rhs.getWidth() * rhs.getHeight());
         }
-
     }
-
 }
